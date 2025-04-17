@@ -4,7 +4,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HyperspaceManager : MonoBehaviour
 {
-    private int currentArena = 1;
+    public int currentArena = 1;
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
@@ -23,8 +23,10 @@ public class HyperspaceManager : MonoBehaviour
             {
                 currentArena = 1;
             }
+            Invoke("ArenaSwitcher", 1.5f);
         }
-        ArenaSwitcher();
+
+        
     }
 
     private void ArenaSwitcher()

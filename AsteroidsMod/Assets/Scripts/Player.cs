@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject playerSpawn3;
     [SerializeField] private GameObject playerSpawn4;
     [SerializeField] private GameObject thisPlayer;
+    [SerializeField] public HyperspaceManager hyperspaceManager;
+    public bool canShoot;
     private int arena;
     private Vector3 playerPos;
 
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
     {
         playerPos = thisPlayer.transform.position;
         // Check which arena the player is in
-        if(playerPos == playerSpawn1.transform.position)
+        if (playerPos == playerSpawn1.transform.position)
         {
             arena = 1;
         }
@@ -47,9 +49,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        
         // Spawn bullet on mouse click
         int leftClickID = 0;
-        if (Input.GetMouseButtonDown(leftClickID))
+        if (Input.GetMouseButtonDown(leftClickID) && arena == hyperspaceManager.currentArena)
         {
             // Bullet transform information when spawned
             Vector3 pos = transform.position + transform.up;
