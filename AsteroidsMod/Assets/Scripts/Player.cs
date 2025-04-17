@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -11,13 +12,47 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rb2d;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameObject playerSpawn1;
+    [SerializeField] private GameObject playerSpawn2;
+    [SerializeField] private GameObject playerSpawn3;
+    [SerializeField] private GameObject playerSpawn4;
+    [SerializeField] private GameObject thisPlayer;
+    [SerializeField] public HyperspaceManager hyperspaceManager;
+    public bool canShoot;
+    private int arena;
+    private Vector3 playerPos;
+
+
+    private void Awake()
+    {
+        playerPos = thisPlayer.transform.position;
+        // Check which arena the player is in
+        if (playerPos == playerSpawn1.transform.position)
+        {
+            arena = 1;
+        }
+        else if (playerPos == playerSpawn2.transform.position)
+        {
+            arena = 2;
+        }
+        else if (playerPos == playerSpawn3.transform.position)
+        {
+            arena = 3;
+        }
+        else if (playerPos == playerSpawn4.transform.position)
+        {
+            arena = 4;
+        }
+    }
+
 
 
     private void Update()
     {
+        
         // Spawn bullet on mouse click
         int leftClickID = 0;
-        if (Input.GetMouseButtonDown(leftClickID))
+        if (Input.GetMouseButtonDown(leftClickID) && arena == hyperspaceManager.currentArena)
         {
             // Bullet transform information when spawned
             Vector3 pos = transform.position + transform.up;
@@ -76,7 +111,24 @@ public class Player : MonoBehaviour
         }
 
         // Reset player position
-        rb2d.MovePosition(Vector2.zero);
+        //rb2d.MovePosition(Vector2.zero);
+        if (arena == 1)
+        {
+            rb2d.MovePosition(playerSpawn1.transform.position);
+        }
+        else if (arena == 2)
+        {
+            rb2d.MovePosition(playerSpawn2.transform.position);
+        }
+        else if (arena == 3)
+        {
+            rb2d.MovePosition(playerSpawn3.transform.position);
+        }
+        else if (arena == 4)
+        {
+            rb2d.MovePosition(playerSpawn4.transform.position);
+        }
+
 
         // Reset asteroids...
     }

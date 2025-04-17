@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2413874576302184835}
   - component: {fileID: 1314849252065193309}
   - component: {fileID: 8491925195168933184}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Asteroid-Md
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -4996133909767993567, guid: af62ce96399349b4abcd31903c37a12b, type: 3}
-  m_Color: {r: 0.4811321, g: 0.2999013, b: 0.21106265, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
